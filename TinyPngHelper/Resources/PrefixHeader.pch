@@ -1,0 +1,14 @@
+//
+//  PrefixHeader.pch
+//  TinyPngHelper
+//
+//  Created by lumeng on 5/20/18.
+//  Copyright © 2018 roundsix. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "macros.h"
+
+#endif /* PrefixHeader_pch */
