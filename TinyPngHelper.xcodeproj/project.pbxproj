@@ -82,13 +82,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		67BD4B6520B16EB100FA353F /* Widgets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Widgets;
-			sourceTree = "<group>";
-		};
 		67C402BD20ADAC6400B4D2A0 = {
 			isa = PBXGroup;
 			children = (
@@ -114,9 +107,6 @@
 			children = (
 				67C402FD20ADCDF500B4D2A0 /* Categories */,
 				67C402F520ADB20900B4D2A0 /* Requests */,
-				67C402F320ADADA100B4D2A0 /* Models */,
-				67C402F420ADADA800B4D2A0 /* Views */,
-				67C402F120ADAD9300B4D2A0 /* Controllers */,
 				67C402F020ADAD7A00B4D2A0 /* Main */,
 				67C402EF20ADAD5600B4D2A0 /* Resources */,
 				67C402EB20ADACCD00B4D2A0 /* Http */,
@@ -169,28 +159,6 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		67C402F120ADAD9300B4D2A0 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		67C402F320ADADA100B4D2A0 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		67C402F420ADADA800B4D2A0 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				67BD4B6520B16EB100FA353F /* Widgets */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		67C402F520ADB20900B4D2A0 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,8 +208,6 @@
 				67C402C220ADAC6400B4D2A0 /* Sources */,
 				67C402C320ADAC6400B4D2A0 /* Frameworks */,
 				67C402C420ADAC6400B4D2A0 /* Resources */,
-				3743A6AC94DFFF9267A2B08F /* [CP] Embed Pods Frameworks */,
-				079EB9AD495BBA60544B16FE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -328,36 +294,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		079EB9AD495BBA60544B16FE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TinyPngHelper/Pods-TinyPngHelper-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3743A6AC94DFFF9267A2B08F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TinyPngHelper/Pods-TinyPngHelper-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		47CF1189EEC4F6EE164F55FF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
