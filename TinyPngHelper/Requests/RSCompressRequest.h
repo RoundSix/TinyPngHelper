@@ -9,8 +9,7 @@
 #import "RSRequest.h"
 #import "RSAPIDefinition.h"
 
-@class UIImage;
-
+@class NSImage;
 @interface Input : NSObject
 
 @property (nonatomic, strong) NSNumber *size;
@@ -36,6 +35,6 @@
 
 RS_INIT_UNAVAILABLE
 
-- (instancetype)initWithImage:(UIImage *)image;
+- (instancetype)initWithImage:(NSImage *)image;
 
 @end

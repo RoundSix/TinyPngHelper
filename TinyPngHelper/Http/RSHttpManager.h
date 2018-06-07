@@ -13,14 +13,14 @@
 
 @interface RSHttpManager : NSObject
 
-RS_DOWNWARN_PROTOTYPES
+//RS_DOWNWARN_PROTOTYPES
 
 + (void)postRequest:(RSRequest<RSAPIDefinition> *)request;
 
 + (void)postRequest:(RSRequest<RSAPIDefinition> *)request
-       successBlock:(void (^)())successBlock
+       successBlock:(void (^)(void))successBlock
      rawFailedBlock:(void (^)(RSError *error))rawFailedBlock
-    completionBlock:(void (^)())completionBlock;
+    completionBlock:(void (^)(void))completionBlock;
 
 + (void)get;
 

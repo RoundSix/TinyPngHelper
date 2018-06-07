@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "3bba36e5-a01f-427e-9045-92375ec5388a",
+		"name": "tinypng",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://api.tinify.com/shrink",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YXBpOktubFRNVmptUlAzMVkwc2t1Y01XRXpZaGFSMURBVE5r"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "https://api.tinify.com/shrink",
+					"protocol": "https",
+					"host": [
+						"api",
+						"tinify",
+						"com"
+					],
+					"path": [
+						"shrink"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

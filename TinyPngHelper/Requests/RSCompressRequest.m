@@ -7,7 +7,8 @@
 //
 
 #import "RSCompressRequest.h"
-@class UIImage;
+#import <AppKit/AppKit.h>
+#import "NSData+RSImageType.h"
 
 @implementation Input
 @end
@@ -18,14 +19,18 @@
 @interface RSCompressRequest()
 
 @property (nonatomic, strong) NSString *fileName;
+@property (nonatomic, strong, nullable) NSData *fileData;
 
 @end
 
 @implementation RSCompressRequest
 
-- (instancetype)initWithImage:(UIImage *)image {
+- (instancetype)initWithImage:(NSImage *)image {
     if (self = [super init]) {
-        
+        @autoreleasepool {
+            NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:[image TIFFRepresentation]];
+            _fileData = [imageRep representationUsingType:NSBitmapImageFileTypePNG properties:@{NSImageInterlaced : @YES}];
+        }
     }
     return self;
 }
@@ -43,7 +48,27 @@
 }
 
 - (NSArray *)mimeBodies {
-    return nil;
+    NSArray *tempArray;
+    if (_fileData) {
+        //TODO: 文件名称可配置
+        _fileName = @"file";
+        NSString *imageContentTypeStr = nil;
+        NSArray *fileStrsArray = @[
+                                   @"",
+                                   @".jpg",
+                                   @".png",
+                                   @".gif",
+                                   @".tiff",
+                                   @".webp",
+                                   ];
+        RSImageDataContentType imageDataContentType = [_fileData rs_contentTypeStr:&imageContentTypeStr];
+        NSString *fileStr = [_fileName stringByAppendingString:fileStrsArray[imageDataContentType]];
+        if (imageContentTypeStr == nil) {
+            imageContentTypeStr = @"";
+        }
+        tempArray = @[_fileData, @"file", fileStr, imageContentTypeStr];
+    }
+    return tempArray;
 }
 
 - (void)parseResponse:(id)responseObject {

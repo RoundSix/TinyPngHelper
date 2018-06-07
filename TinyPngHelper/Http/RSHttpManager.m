@@ -32,17 +32,14 @@ static NSString* baseServerAddress = @"api.tinify.com";
 }
 
 #pragma mark - Public methods
-
-RS_DOWNWARN_PROTOTYPES
-
 + (void)postRequest:(RSRequest<RSAPIDefinition> *)request {
     [self postRequest:request successBlock:nil rawFailedBlock:nil completionBlock:nil];
 }
 
 + (void)postRequest:(RSRequest<RSAPIDefinition> *)request
-       successBlock:(void (^)())successBlock
+       successBlock:(void (^)(void))successBlock
      rawFailedBlock:(void (^)(RSError *))rawFailedBlock
-    completionBlock:(void (^)())completionBlock
+    completionBlock:(void (^)(void))completionBlock
 {
     NSString *url = [NSString stringWithFormat:@"%@%@/%@", request.forceHttps ? @"https://" : @"http://", baseServerAddress, request.url];
     
@@ -51,25 +48,42 @@ RS_DOWNWARN_PROTOTYPES
     NSString *basicValue = [NSString stringWithFormat:@"Basic %@", base64Key];
     
     AFHTTPSessionManager *manager = [self sharedManager];
-    [manager.requestSerializer setValue:basicValue forHTTPHeaderField:@"Authorization"];
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
+//    [manager.requestSerializer setValue:basicValue forHTTPHeaderField:@"Authorization"];
+//    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     if ([request.method isEqualToString:@"post"]) {
-        [manager POST:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-            if (request.mimeBodies) {
-                [formData appendPartWithFileData:request.mimeBodies[0]
-                                            name:request.mimeBodies[1]
-                                        fileName:request.mimeBodies[2]
-                                        mimeType:request.mimeBodies[3]];
+        //TODO:整合移除
+        NSURL *URL = [NSURL URLWithString:url];
+        NSMutableURLRequest *request1 = [NSMutableURLRequest requestWithURL:URL];
+        request1.HTTPMethod=@"POST";
+        request1.HTTPBody = [request mimeBodies].firstObject;
+        [request1 setValue:basicValue forHTTPHeaderField:@"Authorization"];
+        [[manager dataTaskWithRequest:request1 uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+            if (error) {
+                [self handleFailedResponse:error rawFailed:rawFailedBlock];
+            } else {
+                [self handleSuccessResponse:responseObject
+                                    request:request
+                                    success:successBlock
+                                  rawFailed:rawFailedBlock];
             }
-        } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            [self handleSuccessResponse:responseObject
-                                request:request
-                                success:successBlock
-                              rawFailed:rawFailedBlock];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            [self handleFailedResponse:error rawFailed:rawFailedBlock];
-        }];
+        }] resume];
+        //TODO:整合移除
+//        [manager POST:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+//            NSArray *mimeBodies = request.mimeBodies;
+//            if (mimeBodies) {
+//                [formData appendPartWithFileData:mimeBodies[0]
+//                                            name:mimeBodies[1]
+//                                        fileName:mimeBodies[2]
+//                                        mimeType:mimeBodies[3]];
+//            }
+//        } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//            [self handleSuccessResponse:responseObject
+//                                request:request
+//                                success:successBlock
+//                              rawFailed:rawFailedBlock];
+//        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//            [self handleFailedResponse:error rawFailed:rawFailedBlock];
+//        }];
     } else {
         [manager GET:url
           parameters:nil
@@ -99,7 +113,7 @@ RS_DOWNWARN_PROTOTYPES
 
 + (void)handleSuccessResponse:(id _Nullable)responseObject
                       request:(RSRequest<RSAPIDefinition> *)request
-                      success:(void (^)())success
+                      success:(void (^)(void))success
                     rawFailed:(void (^)(RSError *))rawFailed
 {
     if ([responseObject objectForKey:@"error"]) { // means error
@@ -115,7 +129,7 @@ RS_DOWNWARN_PROTOTYPES
     }
 }
 
-+ (void)handleFailedResponse:(NSError *)error rawFailed:(void (^)())rawFailed {
++ (void)handleFailedResponse:(NSError *)error rawFailed:(void (^)(RSError *))rawFailed {
     RSError *rsError = [RSError initWithError:error];
     if (rawFailed) {
         rawFailed(rsError);
