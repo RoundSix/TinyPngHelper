@@ -1,7 +1,15 @@
 # OSX
 .DS_Store
+*.swp
 
 # Pods
 Pods
 
+# UserData
+xcuserdata/
 *.xcuserdatad
+*.xcuserstate
+
+# Build generated
+build/
+DerivedData/
