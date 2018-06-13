@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		67C402CB20ADAC6400B4D2A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C402CA20ADAC6400B4D2A0 /* AppDelegate.m */; };
-		67C402CE20ADAC6400B4D2A0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C402CD20ADAC6400B4D2A0 /* ViewController.m */; };
 		67C402D020ADAC6500B4D2A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67C402CF20ADAC6500B4D2A0 /* Assets.xcassets */; };
 		67C402D320ADAC6500B4D2A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67C402D120ADAC6500B4D2A0 /* Main.storyboard */; };
 		67C402D620ADAC6500B4D2A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C402D520ADAC6500B4D2A0 /* main.m */; };
@@ -18,6 +17,17 @@
 		67C402FB20ADB25D00B4D2A0 /* RSCompressRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C402FA20ADB25D00B4D2A0 /* RSCompressRequest.m */; };
 		67C4030020ADCE1B00B4D2A0 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C402FF20ADCE1B00B4D2A0 /* NSString+Base64.m */; };
 		67DFBDF520B99ED700486A9A /* RSError.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DFBDF420B99ED700486A9A /* RSError.m */; };
+		67E5C3ED20CE525E0098D9C1 /* RSCompressTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E5C3EC20CE525E0098D9C1 /* RSCompressTask.m */; };
+		67E5C3EE20CE525E0098D9C1 /* RSCompressTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E5C3EC20CE525E0098D9C1 /* RSCompressTask.m */; };
+		67E6692920CE668500978B7A /* RSMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E6691D20CE668400978B7A /* RSMainView.m */; };
+		67E6692A20CE668500978B7A /* RSGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E6692120CE668400978B7A /* RSGradientView.m */; };
+		67E6692B20CE668500978B7A /* RSDragContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E6692220CE668400978B7A /* RSDragContainer.m */; };
+		67E6692C20CE668500978B7A /* RSBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E6692420CE668400978B7A /* RSBaseViewController.m */; };
+		67E6692D20CE668500978B7A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E6692720CE668400978B7A /* ViewController.m */; };
+		67E6693520CF61F500978B7A /* RSFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E6693420CF61F500978B7A /* RSFileHelper.m */; };
+		67E6693620CF61F500978B7A /* RSFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E6693420CF61F500978B7A /* RSFileHelper.m */; };
+		67E6694620CF984B00978B7A /* RSCompressTaskInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E6694420CF984A00978B7A /* RSCompressTaskInfo.m */; };
+		67E6694720CF984B00978B7A /* RSCompressTaskInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 67E6694420CF984A00978B7A /* RSCompressTaskInfo.m */; };
 		7747EBBA4B6BF35B320D83C6 /* libPods-TinyPngHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D556CA74AC8D96AE53532AF4 /* libPods-TinyPngHelper.a */; };
 		CE1FA23420C7BC5A00597D37 /* NSData+RSImageType.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1FA23320C7BC5A00597D37 /* NSData+RSImageType.m */; };
 		CE1FA23620C7E9FA00597D37 /* launchImage-Protrait~iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1FA23520C7E9F900597D37 /* launchImage-Protrait~iPad@2x.png */; };
@@ -39,8 +49,6 @@
 		67C402C620ADAC6400B4D2A0 /* TinyPngHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyPngHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67C402C920ADAC6400B4D2A0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		67C402CA20ADAC6400B4D2A0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		67C402CC20ADAC6400B4D2A0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		67C402CD20ADAC6400B4D2A0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		67C402CF20ADAC6500B4D2A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		67C402D220ADAC6500B4D2A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		67C402D420ADAC6500B4D2A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,6 +68,23 @@
 		67C402FF20ADCE1B00B4D2A0 /* NSString+Base64.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
 		67DFBDF320B99ED700486A9A /* RSError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSError.h; sourceTree = "<group>"; };
 		67DFBDF420B99ED700486A9A /* RSError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSError.m; sourceTree = "<group>"; };
+		67E5C3EB20CE525E0098D9C1 /* RSCompressTask.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSCompressTask.h; sourceTree = "<group>"; };
+		67E5C3EC20CE525E0098D9C1 /* RSCompressTask.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSCompressTask.m; sourceTree = "<group>"; };
+		67E6691C20CE668400978B7A /* RSMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSMainView.h; sourceTree = "<group>"; };
+		67E6691D20CE668400978B7A /* RSMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSMainView.m; sourceTree = "<group>"; };
+		67E6691F20CE668400978B7A /* RSGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSGradientView.h; sourceTree = "<group>"; };
+		67E6692020CE668400978B7A /* RSDragContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSDragContainer.h; sourceTree = "<group>"; };
+		67E6692120CE668400978B7A /* RSGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSGradientView.m; sourceTree = "<group>"; };
+		67E6692220CE668400978B7A /* RSDragContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSDragContainer.m; sourceTree = "<group>"; };
+		67E6692420CE668400978B7A /* RSBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSBaseViewController.m; sourceTree = "<group>"; };
+		67E6692520CE668400978B7A /* RSBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSBaseViewController.h; sourceTree = "<group>"; };
+		67E6692720CE668400978B7A /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		67E6692820CE668400978B7A /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		67E6693320CF61F500978B7A /* RSFileHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSFileHelper.h; sourceTree = "<group>"; };
+		67E6693420CF61F500978B7A /* RSFileHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSFileHelper.m; sourceTree = "<group>"; };
+		67E6693720CF6B6900978B7A /* GCDMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCDMacro.h; sourceTree = "<group>"; };
+		67E6694420CF984A00978B7A /* RSCompressTaskInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSCompressTaskInfo.m; sourceTree = "<group>"; };
+		67E6694520CF984A00978B7A /* RSCompressTaskInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSCompressTaskInfo.h; sourceTree = "<group>"; };
 		6D9AC1BB7BA89C354078D0FD /* Pods-TinyPngHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinyPngHelper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TinyPngHelper/Pods-TinyPngHelper.debug.xcconfig"; sourceTree = "<group>"; };
 		8A627DF0E6C19510A310FBD1 /* Pods-TinyPngHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinyPngHelper.release.xcconfig"; path = "Pods/Target Support Files/Pods-TinyPngHelper/Pods-TinyPngHelper.release.xcconfig"; sourceTree = "<group>"; };
 		CE1FA23220C7BC5A00597D37 /* NSData+RSImageType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+RSImageType.h"; sourceTree = "<group>"; };
@@ -110,6 +135,10 @@
 		67C402C820ADAC6400B4D2A0 /* TinyPngHelper */ = {
 			isa = PBXGroup;
 			children = (
+				67E6694320CF984A00978B7A /* Models */,
+				67E6692320CE668400978B7A /* Controllers */,
+				67E6691A20CE668400978B7A /* Views */,
+				67E5C3EA20CE52430098D9C1 /* Utils */,
 				67C402FD20ADCDF500B4D2A0 /* Categories */,
 				67C402F520ADB20900B4D2A0 /* Requests */,
 				67C402F020ADAD7A00B4D2A0 /* Main */,
@@ -158,9 +187,8 @@
 			children = (
 				67C402C920ADAC6400B4D2A0 /* AppDelegate.h */,
 				67C402CA20ADAC6400B4D2A0 /* AppDelegate.m */,
-				67C402CC20ADAC6400B4D2A0 /* ViewController.h */,
-				67C402CD20ADAC6400B4D2A0 /* ViewController.m */,
 				67C402D120ADAC6500B4D2A0 /* Main.storyboard */,
+				67E6693720CF6B6900978B7A /* GCDMacro.h */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -186,6 +214,74 @@
 				CE1FA23320C7BC5A00597D37 /* NSData+RSImageType.m */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		67E5C3EA20CE52430098D9C1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				67E5C3EB20CE525E0098D9C1 /* RSCompressTask.h */,
+				67E5C3EC20CE525E0098D9C1 /* RSCompressTask.m */,
+				67E6693320CF61F500978B7A /* RSFileHelper.h */,
+				67E6693420CF61F500978B7A /* RSFileHelper.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		67E6691A20CE668400978B7A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				67E6691B20CE668400978B7A /* Main */,
+				67E6691E20CE668400978B7A /* Widgets */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		67E6691B20CE668400978B7A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				67E6691C20CE668400978B7A /* RSMainView.h */,
+				67E6691D20CE668400978B7A /* RSMainView.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		67E6691E20CE668400978B7A /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				67E6691F20CE668400978B7A /* RSGradientView.h */,
+				67E6692120CE668400978B7A /* RSGradientView.m */,
+				67E6692020CE668400978B7A /* RSDragContainer.h */,
+				67E6692220CE668400978B7A /* RSDragContainer.m */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		67E6692320CE668400978B7A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				67E6692520CE668400978B7A /* RSBaseViewController.h */,
+				67E6692420CE668400978B7A /* RSBaseViewController.m */,
+				67E6692620CE668400978B7A /* Main */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		67E6692620CE668400978B7A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				67E6692820CE668400978B7A /* ViewController.h */,
+				67E6692720CE668400978B7A /* ViewController.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		67E6694320CF984A00978B7A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				67E6694520CF984A00978B7A /* RSCompressTaskInfo.h */,
+				67E6694420CF984A00978B7A /* RSCompressTaskInfo.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7C541BC5542A7016863104DB /* Frameworks */ = {
@@ -333,14 +429,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67E6692D20CE668500978B7A /* ViewController.m in Sources */,
 				67C402F820ADB21900B4D2A0 /* RSRequest.m in Sources */,
-				67C402CE20ADAC6400B4D2A0 /* ViewController.m in Sources */,
+				67E5C3ED20CE525E0098D9C1 /* RSCompressTask.m in Sources */,
+				67E6692920CE668500978B7A /* RSMainView.m in Sources */,
 				67C402D620ADAC6500B4D2A0 /* main.m in Sources */,
 				67DFBDF520B99ED700486A9A /* RSError.m in Sources */,
 				67C402EE20ADACDB00B4D2A0 /* RSHttpManager.m in Sources */,
 				67C402FB20ADB25D00B4D2A0 /* RSCompressRequest.m in Sources */,
 				67C402CB20ADAC6400B4D2A0 /* AppDelegate.m in Sources */,
+				67E6694620CF984B00978B7A /* RSCompressTaskInfo.m in Sources */,
 				67C4030020ADCE1B00B4D2A0 /* NSString+Base64.m in Sources */,
+				67E6692A20CE668500978B7A /* RSGradientView.m in Sources */,
+				67E6692B20CE668500978B7A /* RSDragContainer.m in Sources */,
+				67E6692C20CE668500978B7A /* RSBaseViewController.m in Sources */,
+				67E6693520CF61F500978B7A /* RSFileHelper.m in Sources */,
 				CE1FA23420C7BC5A00597D37 /* NSData+RSImageType.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,7 +452,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67E5C3EE20CE525E0098D9C1 /* RSCompressTask.m in Sources */,
+				67E6693620CF61F500978B7A /* RSFileHelper.m in Sources */,
 				67C402E120ADAC6500B4D2A0 /* TinyPngHelperTests.m in Sources */,
+				67E6694720CF984B00978B7A /* RSCompressTaskInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,7 +598,7 @@
 				CODE_SIGN_ENTITLEMENTS = TinyPngHelper/Resources/TinyPngHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 7J42285BL9;
+				DEVELOPMENT_TEAM = E66G8HGFS7;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Resources/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/TinyPngHelper/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -512,7 +618,7 @@
 				CODE_SIGN_ENTITLEMENTS = TinyPngHelper/Resources/TinyPngHelper.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 7J42285BL9;
+				DEVELOPMENT_TEAM = E66G8HGFS7;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Resources/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/TinyPngHelper/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

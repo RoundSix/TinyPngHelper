@@ -12,17 +12,21 @@ PODS:
   - AFNetworking/Reachability (3.2.0)
   - AFNetworking/Security (3.2.0)
   - AFNetworking/Serialization (3.2.0)
+  - Masonry (1.1.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - Masonry
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - Masonry
 
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
 
-PODFILE CHECKSUM: 94e234afa935cf6ffb766fd0d81c0df68034e029
+PODFILE CHECKSUM: 84497bb145e18afdc0949021f9d3cc910b1d5012
 
 COCOAPODS: 1.5.3

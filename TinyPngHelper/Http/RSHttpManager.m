@@ -24,7 +24,6 @@ static NSString* baseServerAddress = @"api.tinify.com";
             instance.requestSerializer.timeoutInterval = 30.0f;
             instance.securityPolicy.allowInvalidCertificates = YES;
             instance.securityPolicy.validatesDomainName = NO;
-//            [instance.reachabilityManager startMonitoring];
         }
     });
     
@@ -32,6 +31,7 @@ static NSString* baseServerAddress = @"api.tinify.com";
 }
 
 #pragma mark - Public methods
+
 + (void)postRequest:(RSRequest<RSAPIDefinition> *)request {
     [self postRequest:request successBlock:nil rawFailedBlock:nil completionBlock:nil];
 }
@@ -42,70 +42,169 @@ static NSString* baseServerAddress = @"api.tinify.com";
     completionBlock:(void (^)(void))completionBlock
 {
     NSString *url = [NSString stringWithFormat:@"%@%@/%@", request.forceHttps ? @"https://" : @"http://", baseServerAddress, request.url];
-    
     NSString *assembledApikey = [NSString stringWithFormat:@"api:%@", request.apiKey];
     NSString *base64Key = [assembledApikey encodedString];
     NSString *basicValue = [NSString stringWithFormat:@"Basic %@", base64Key];
-    
     AFHTTPSessionManager *manager = [self sharedManager];
-//    [manager.requestSerializer setValue:basicValue forHTTPHeaderField:@"Authorization"];
-//    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    if ([request.method isEqualToString:@"post"]) {
-        //TODO:整合移除
-        NSURL *URL = [NSURL URLWithString:url];
-        NSMutableURLRequest *request1 = [NSMutableURLRequest requestWithURL:URL];
-        request1.HTTPMethod=@"POST";
-        request1.HTTPBody = [request mimeBodies].firstObject;
-        [request1 setValue:basicValue forHTTPHeaderField:@"Authorization"];
-        [[manager dataTaskWithRequest:request1 uploadProgress:nil downloadProgress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-            if (error) {
-                [self handleFailedResponse:error rawFailed:rawFailedBlock];
-            } else {
-                [self handleSuccessResponse:responseObject
-                                    request:request
-                                    success:successBlock
-                                  rawFailed:rawFailedBlock];
-            }
-        }] resume];
-        //TODO:整合移除
-//        [manager POST:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-//            NSArray *mimeBodies = request.mimeBodies;
-//            if (mimeBodies) {
-//                [formData appendPartWithFileData:mimeBodies[0]
-//                                            name:mimeBodies[1]
-//                                        fileName:mimeBodies[2]
-//                                        mimeType:mimeBodies[3]];
-//            }
-//        } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//            [self handleSuccessResponse:responseObject
-//                                request:request
-//                                success:successBlock
-//                              rawFailed:rawFailedBlock];
-//        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//            [self handleFailedResponse:error rawFailed:rawFailedBlock];
-//        }];
-    } else {
-        [manager GET:url
-          parameters:nil
-            progress:nil
-             success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
-        {
-            [self handleSuccessResponse:responseObject
+    
+    switch (request.method) {
+        case RSRequestMethod_POST:
+            [self handlePostWithManager:manager
+                                    url:url
                                 request:request
-                                success:successBlock
-                              rawFailed:rawFailedBlock];
-        }
-             failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
-        {
-            [self handleFailedResponse:error rawFailed:rawFailedBlock];
-        }];
+                           successBlock:successBlock
+                         rawFailedBlock:rawFailedBlock
+                        completionBlock:completionBlock];
+            break;
+        case RSRequestMethod_GET:
+            [self handleGetWithManager:manager
+                                   url:url
+                               request:request
+                          successBlock:successBlock
+                        rawFailedBlock:rawFailedBlock
+                       completionBlock:completionBlock];
+            break;
+        case RSRequestMethod_BINARY:
+            [self handleBinaryWithManager:manager
+                                      url:url
+                               authHeader:basicValue
+                                  request:request
+                             successBlock:successBlock
+                           rawFailedBlock:rawFailedBlock
+                          completionBlock:completionBlock];
+            break;
+        default:
+            break;
     }
 }
 
 + (void)get {
+    // TODO: GET
+}
+
++ (void)downloadFromUrlString:(NSString *)urlString
+              destinationPath:(NSURL *)destination
+                     progress:(void (^)(NSProgress *))progressHandler
+               successHandler:(void (^)(void))successHandler
+                failedHandler:(void (^)(RSError *))failedHandler
+{
+    NSURL *url = [NSURL URLWithString:urlString];
+    [self downloadFromUrl:url
+          destinationPath:destination
+                 progress:progressHandler
+           successHandler:successHandler
+            failedHandler:failedHandler];
+}
+
++ (void)downloadFromUrl:(NSURL *)url
+        destinationPath:(NSURL *)destination
+               progress:(void (^)(NSProgress *))progressHandler
+         successHandler:(void (^)(void))successHandler
+          failedHandler:(void (^)(RSError *))failedHandler
+{
+    AFHTTPSessionManager *manager = [self sharedManager];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    [manager downloadTaskWithRequest:request
+                            progress:^(NSProgress * _Nonnull downloadProgress) {
+                                if (progressHandler) {
+                                    progressHandler(downloadProgress);
+                                }
+                            }
+                         destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+                             return destination;
+                         }
+                   completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+                       if (error) {
+                           if (failedHandler) {
+                               failedHandler([RSError initWithError:error]);
+                           }
+                       } else {
+                           if (successHandler) {
+                               successHandler();
+                           }
+                       }
+                   }];
 }
 
 #pragma mark - Internal
+
++ (void)handlePostWithManager:(AFHTTPSessionManager *)manager
+                          url:(NSString *)url
+                      request:(RSRequest<RSAPIDefinition> *)request
+                 successBlock:(void (^)(void))successBlock
+               rawFailedBlock:(void (^)(RSError *))rawFailedBlock
+              completionBlock:(void (^)(void))completionBlock
+{
+    [manager POST:url parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        NSArray *mimeBodies = request.mimeBodies;
+        if (mimeBodies) {
+            [formData appendPartWithFileData:mimeBodies[0]
+                                        name:mimeBodies[1]
+                                    fileName:mimeBodies[2]
+                                    mimeType:mimeBodies[3]];
+        }
+    } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self handleSuccessResponse:responseObject
+                            request:request
+                            success:successBlock
+                          rawFailed:rawFailedBlock];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self handleFailedResponse:error rawFailed:rawFailedBlock];
+    }];
+}
+
++ (void)handleBinaryWithManager:(AFHTTPSessionManager *)manager
+                            url:(NSString *)url
+                     authHeader:(NSString *)authHeader
+                        request:(RSRequest<RSAPIDefinition> *)request
+                   successBlock:(void (^)(void))successBlock
+                 rawFailedBlock:(void (^)(RSError *))rawFailedBlock
+                completionBlock:(void (^)(void))completionBlock
+{
+    NSURL *URL = [NSURL URLWithString:url];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:URL];
+    urlRequest.HTTPMethod = @"POST";
+    urlRequest.HTTPBody = [request mimeBodies].firstObject;
+    [urlRequest setValue:authHeader forHTTPHeaderField:@"Authorization"];
+    [[manager dataTaskWithRequest:urlRequest
+                   uploadProgress:nil
+                 downloadProgress:nil
+                completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error)
+      {
+          if (error) {
+              [self handleFailedResponse:error rawFailed:rawFailedBlock];
+          } else {
+              [self handleSuccessResponse:responseObject
+                                  request:request
+                                  success:successBlock
+                                rawFailed:rawFailedBlock];
+          }
+      }] resume];
+}
+
++ (void)handleGetWithManager:(AFHTTPSessionManager *)manager
+                         url:(NSString *)url
+                     request:(RSRequest<RSAPIDefinition> *)request
+                successBlock:(void (^)(void))successBlock
+              rawFailedBlock:(void (^)(RSError *))rawFailedBlock
+             completionBlock:(void (^)(void))completionBlock
+{
+    [manager GET:url
+      parameters:nil
+        progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+     {
+         [self handleSuccessResponse:responseObject
+                             request:request
+                             success:successBlock
+                           rawFailed:rawFailedBlock];
+     }
+         failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
+     {
+         [self handleFailedResponse:error rawFailed:rawFailedBlock];
+     }];
+}
 
 + (NSString *)assembleUrlWithRequest:(RSRequest<RSAPIDefinition> *)request {
     return [NSString stringWithFormat:@"%@%@/%@", request.forceHttps ? @"https://" : @"http://", baseServerAddress, request.url];

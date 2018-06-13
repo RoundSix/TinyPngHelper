@@ -7,8 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "RSBaseViewController.h"
 
-@interface ViewController : NSViewController
+@interface ViewController : RSBaseViewController
 
 
 @end

@@ -39,8 +39,8 @@
     return @"shrink";
 }
 
-- (NSString *)method {
-    return @"post";
+- (RSRequestMethod)method {
+    return RSRequestMethod_BINARY;
 }
 
 - (BOOL)forceHttps {

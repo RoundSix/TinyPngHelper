@@ -24,4 +24,16 @@
 
 + (void)get;
 
++ (void)downloadFromUrlString:(NSString *)urlString
+              destinationPath:(NSURL *)destination
+                     progress:(void (^)(NSProgress *progress))progressHandler
+               successHandler:(void (^)(void))successHandler
+                failedHandler:(void (^)(RSError *error))failedHandler;
+
++ (void)downloadFromUrl:(NSURL *)url
+        destinationPath:(NSURL *)destination
+               progress:(void (^)(NSProgress *progress))progressHandler
+         successHandler:(void (^)(void))successHandler
+          failedHandler:(void (^)(RSError *error))failedHandler;
+
 @end

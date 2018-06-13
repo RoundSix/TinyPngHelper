@@ -8,11 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, RSRequestMethod) {
+    RSRequestMethod_POST,
+    RSRequestMethod_GET,
+    RSRequestMethod_BINARY
+};
+
 @protocol RSAPIDefinition
 
 - (nonnull NSString *)url;
 
-- (nonnull NSString *)method;
+- (RSRequestMethod)method;
 
 /**
  [0] is NSData of file

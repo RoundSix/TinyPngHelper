@@ -8,5 +8,6 @@ target 'TinyPngHelper' do
   # Pods for TinyPngHelper
 
   pod 'AFNetworking', '~> 3.0'
+  pod 'Masonry'
 
 end
