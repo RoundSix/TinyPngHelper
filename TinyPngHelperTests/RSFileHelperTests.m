@@ -1,8 +1,8 @@
 //
-//  NSString+Base64.h
-//  TinyPngHelper
+//  RSFileHelperTests.m
+//  TinyPngHelperTests
 //
-//  Created by lumeng on 5/17/18.
+//  Created by lumeng on 6/16/18.
 //  Copyright © 2018 roundsix. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,10 +23,38 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#import <XCTest/XCTest.h>
 
-@interface NSString (Base64)
+#import "RSFileHelper.h"
 
-- (NSString *)encodedString;
+@interface RSFileHelperTests : XCTestCase
+
+@property (nonatomic, strong) NSURL *imageUrl;
+
+@end
+
+@implementation RSFileHelperTests
+
+- (void)setUp {
+    _imageUrl = [[NSBundle mainBundle] URLForResource:@"%@#$%^&*" withExtension:@"jpg"];
+}
+
+- (void)tearDown {
+    _imageUrl = nil;
+}
+
+- (void)testFileNameFromUrl {
+    NSString *fileName = [RSFileHelper fileNameFromUrl:_imageUrl];
+    XCTAssertTrue([fileName isEqualToString:@"%@#$%^&*.jpg"]);
+}
+
+- (void)testGetFileSizeWithFileUrl {
+    float fileSize = [RSFileHelper getFileSizeWithFileUrl:_imageUrl];
+    XCTAssertTrue(fileSize == 134014.0);
+    
+    NSURL *empty = [NSURL URLWithString:@"do-not-exists"];
+    float emptyFileSize = [RSFileHelper getFileSizeWithFileUrl:empty];
+    XCTAssertTrue(emptyFileSize == 0);
+}
 
 @end
