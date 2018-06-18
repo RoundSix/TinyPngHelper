@@ -30,7 +30,7 @@ typedef NS_ENUM(NSInteger, RSCompressTaskStatus) {
     RSCompressTaskStatusWaiting,
     RSCompressTaskStatusUploading,
     RSCompressTaskStatusDownloading,
-    RSCompressTaskStatusComplete,
+    RSCompressTaskStatusCompleted,
     RSCompressTaskStatusCanceled,
     RSCompressTaskStatusError
 };

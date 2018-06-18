@@ -28,6 +28,4 @@
 
 @interface ViewController : RSBaseViewController
 
-
 @end
-

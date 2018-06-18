@@ -10,6 +10,7 @@
 		67456C9C20D5159100C56BFB /* %@#$%^&*.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 67456C9A20D5159100C56BFB /* %@#$%^&*.jpg */; };
 		67456C9D20D5159100C56BFB /* %@#$%^&*.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 67456C9A20D5159100C56BFB /* %@#$%^&*.jpg */; };
 		67456CA220D52BEF00C56BFB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 67456CA420D52BEF00C56BFB /* Localizable.strings */; };
+		67686A7820D773BC004F9C01 /* RSCompressTaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 67686A7720D773BC004F9C01 /* RSCompressTaskTests.m */; };
 		67C402CB20ADAC6400B4D2A0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67C402CA20ADAC6400B4D2A0 /* AppDelegate.m */; };
 		67C402D020ADAC6500B4D2A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67C402CF20ADAC6500B4D2A0 /* Assets.xcassets */; };
 		67C402D320ADAC6500B4D2A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67C402D120ADAC6500B4D2A0 /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		67247B6B20D52C4D00FD9C08 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		67456C9A20D5159100C56BFB /* %@#$%^&*.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "%@#$%^&*.jpg"; sourceTree = "<group>"; };
 		67456CA320D52BEF00C56BFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		67686A7720D773BC004F9C01 /* RSCompressTaskTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSCompressTaskTests.m; sourceTree = "<group>"; };
 		67BD4B6620B1766F00FA353F /* macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
 		67BD4B6720B177C700FA353F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		67C402C620ADAC6400B4D2A0 /* TinyPngHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyPngHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +167,7 @@
 			children = (
 				67C402E220ADAC6500B4D2A0 /* Info.plist */,
 				67DFDD8520D50D80008AB962 /* RSFileHelperTests.m */,
+				67686A7720D773BC004F9C01 /* RSCompressTaskTests.m */,
 			);
 			path = TinyPngHelperTests;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				67E6693620CF61F500978B7A /* RSFileHelper.m in Sources */,
 				67E6694720CF984B00978B7A /* RSCompressTaskInfo.m in Sources */,
 				67DFDD8620D50D80008AB962 /* RSFileHelperTests.m in Sources */,
+				67686A7820D773BC004F9C01 /* RSCompressTaskTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

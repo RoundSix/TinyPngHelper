@@ -165,7 +165,7 @@
 }
 
 - (void)handleSuccessWithTask:(RSCompressTaskInfo *)task {
-    task.taskStatus = RSCompressTaskStatusComplete;
+    task.taskStatus = RSCompressTaskStatusCompleted;
     if (_delegate) {
         [_delegate compressTaskUpdate:task];
     }
