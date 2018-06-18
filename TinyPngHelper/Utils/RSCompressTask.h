@@ -40,8 +40,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)defaultTask;
 
+/**
+ Append multiple tasks to the task queue.
+
+ @param taskInfos RSCompressTaskInfo array
+ */
 - (void)appendTasks:(NSArray<RSCompressTaskInfo *> *)taskInfos;
 
+/**
+ Append single task to the task queue.
+
+ @param taskInfo RSCompressTaskInfo instance
+ */
 - (void)appendTask:(RSCompressTaskInfo *)taskInfo;
 
 /**
